@@ -1,0 +1,81 @@
+$colors: (
+        brand-1: #58dcff,
+        brand-2: #9b4ed4,
+        brand-3: #9ebf16,
+        brand-4: #ff8000,
+        brand-5: #d23333,
+        brand-6: #212121,
+        brand-7: #ffffff,
+);
+
+$font: 'Montserrat', sans-serif;
+
+@function getBrandColor($name) {
+  @return map-get($colors, $name);
+}
+
+@function tint($color, $percentage) {
+  @return mix(white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+@keyframes fade {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1 }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: getBrandColor(brand-7);
+  font-family: $font;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.header {
+  margin: 0;
+  font-size: 60px;
+  color: getBrandColor(brand-1);
+  font-weight: 200;
+  position: relative;
+  letter-spacing: -0.06em;
+}
+
+.sub-message {
+  color: tint(getBrandColor(brand-6), 50%);
+  font-weight: 300;
+}
+
+.box {
+  width: 1000px;
+  height: 1000px;
+  transform: rotate(36deg);
+  background: rgba(getBrandColor(brand-1), 0.5);
+  position: absolute;
+  top: -850px;
+  left: -710px;
+  animation: fade 10s infinite;
+
+  &--2 {
+    transform: rotate(50deg);
+    top: -850px;
+    left: -670px;
+    animation: fade 5s infinite 0.5s;
+  }
+}

@@ -1,0 +1,51 @@
+@keyframes fade {
+  0% {
+    opacity: 1; }
+  50% {
+    opacity: 0.5; }
+  100% {
+    opacity: 1; } }
+
+* {
+  box-sizing: border-box; }
+
+html {
+  background: #ffffff;
+  font-family: "Montserrat", sans-serif; }
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+  overflow: hidden; }
+
+.header {
+  margin: 0;
+  font-size: 60px;
+  color: #58dcff;
+  font-weight: 200;
+  position: relative;
+  letter-spacing: -0.06em; }
+
+.sub-message {
+  color: #909090;
+  font-weight: 300; }
+
+.box {
+  width: 1000px;
+  height: 1000px;
+  transform: rotate(36deg);
+  background: rgba(88, 220, 255, 0.5);
+  position: absolute;
+  top: -850px;
+  left: -710px;
+  animation: fade 10s infinite; }
+  .box--2 {
+    transform: rotate(50deg);
+    top: -850px;
+    left: -670px;
+    animation: fade 5s infinite 0.5s; }
