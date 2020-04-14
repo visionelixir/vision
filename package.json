@@ -17,7 +17,9 @@
   },
   "author": "Brent Honeybone",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "@visionelixir/elixir": "0.0.2"
+  },
   "jest": {
     "moduleFileExtensions": [
       "js",
@@ -58,19 +60,19 @@
   "devDependencies": {
     "@types/jest": "^24.9.1",
     "@types/koa": "^2.11.3",
-    "@types/node": "^12.12.34",
-    "@typescript-eslint/eslint-plugin": "^2.26.0",
-    "@typescript-eslint/parser": "^2.26.0",
+    "@types/node": "^12.12.35",
+    "@typescript-eslint/eslint-plugin": "^2.28.0",
+    "@typescript-eslint/parser": "^2.28.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
-    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-prettier": "^3.1.3",
     "jest": "^24.9.0",
     "node-sass": "^4.13.1",
     "nodemon": "^1.19.4",
     "prettier": "^1.19.1",
     "supertest": "^4.0.2",
     "ts-jest": "^24.3.0",
-    "ts-node": "^8.8.1",
+    "ts-node": "^8.8.2",
     "typescript": "^3.8.3"
   }
 }
