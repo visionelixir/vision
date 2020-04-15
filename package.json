@@ -6,8 +6,8 @@
   "scripts": {
     "test": "jest",
     "start": "clear && nodemon --watch 'vision/**/*' -e ts,json,njk --exec ts-node ./vision/index.ts",
-    "lint": "esw 'src/**/*.{js,ts}'",
-    "lint:watch": "esw -w 'src/**/*.{js,ts}'",
+    "lint": "esw 'vision/**/*.{js,ts}'",
+    "lint:watch": "esw -w 'vision/**/*.{js,ts}'",
     "typescript:build": "tsc",
     "typescript:watch": "tsc --watch",
     "scss:watch": "node-sass ./vision/resources/sass -o ./vision/public --watch",
