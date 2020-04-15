@@ -7,7 +7,7 @@ export class CoreRepository {
       FROM ${table}
       ORDER BY id`
 
-    const result = await DatabaseManager.get(db).queryMany(query)
+    const result = await DatabaseManager.get(db).query(query)
 
     return result
   }
@@ -23,7 +23,7 @@ export class CoreRepository {
         WHERE id = $1
     `
 
-    const result = await DatabaseManager.get(db).query(query, [id])
+    const result = await DatabaseManager.get(db).queryOne(query, [id])
 
     return result
   }

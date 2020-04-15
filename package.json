@@ -18,7 +18,7 @@
   "author": "Brent Honeybone",
   "license": "ISC",
   "dependencies": {
-    "@visionelixir/elixir": "0.0.2"
+    "@visionelixir/elixir": "^0.1.0"
   },
   "jest": {
     "moduleFileExtensions": [
