@@ -1,8 +1,12 @@
-/*
-import { View, KeyValue } from '@glacial/framework'
+import {
+  ViewFacade as View,
+  VisionFacade as Vision,
+  KeyValue,
+} from '@visionelixir/elixir'
 
-export const errorHandler = async (
+export const websiteErrorHandler = async (
   statusCode: number,
+  _error: Error,
   ctx: KeyValue,
 ): Promise<void> => {
   switch (statusCode) {
@@ -22,4 +26,21 @@ export const errorHandler = async (
       })
   }
 }
-*/
+
+export const apiErrorHandler = async (
+  statusCode: number,
+  error: Error,
+  ctx: KeyValue,
+): Promise<void> => {
+  if (statusCode === 500) {
+    if (Vision.getConfig().debug) {
+      ctx.body = { error: error }
+    } else {
+      ctx.body = { error: "Oh noes, that's a 500 :(" }
+    }
+  }
+
+  if (statusCode === 404) {
+    ctx.body = { error: "Oh noes, that's a 404 :(" }
+  }
+}

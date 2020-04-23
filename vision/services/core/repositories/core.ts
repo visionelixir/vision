@@ -1,7 +1,13 @@
-import { KeyValue, DatabaseManagerFacade as DatabaseManager } from '@visionelixir/elixir'
+import {
+  KeyValue,
+  DatabaseManagerFacade as DatabaseManager,
+} from '@visionelixir/elixir'
 
 export class CoreRepository {
-  public static all = async (table: string, db?: string): Promise<KeyValue[]> => {
+  public static all = async (
+    table: string,
+    db?: string,
+  ): Promise<KeyValue[]> => {
     const query = `
       SELECT *
       FROM ${table}

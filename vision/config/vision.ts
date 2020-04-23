@@ -1,15 +1,15 @@
-import { VisionConfig, Environment } from '@visionelixir/elixir'
+import { VisionConfig, Environment, AppEnvironment } from '@visionelixir/elixir'
 import * as path from 'path'
 
 export const VISION_CONFIG: VisionConfig = {
-  name: 'Vision',
+  name: Environment.get('NAME') || 'Vision',
 
   host: 'localhost',
-  port: 3000,
+  port: Environment.get('PORT') || 3000,
 
-  environment: Environment.DEVELOPMENT,
+  environment: AppEnvironment.DEVELOPMENT,
 
-  debug: true,
+  debug: false,
 
   timezone: 'UTC',
 

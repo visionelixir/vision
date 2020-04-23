@@ -1,4 +1,9 @@
-import { Context, Middleware, ElixirError, ViewFacade as View } from '@visionelixir/elixir'
+import {
+  Context,
+  Middleware,
+  ElixirError,
+  ViewFacade as View,
+} from '@visionelixir/elixir'
 import { CoreRepository } from '../repositories/core'
 
 export class CoreMiddleware {
@@ -6,7 +11,7 @@ export class CoreMiddleware {
     return async (ctx: Context): Promise<void> => {
       ctx.body = {
         ...ctx.vision,
-        instance: 'vision instance'
+        instance: 'vision instance',
       }
     }
   }
@@ -52,8 +57,10 @@ export class CoreMiddleware {
 
       const view = await View.render('welcome', {
         page: {
-          name: 'VisionElixir',
           title: 'Welcome to VisionElixir',
+        },
+        app: {
+          name: ctx.vision.name,
         },
       })
 

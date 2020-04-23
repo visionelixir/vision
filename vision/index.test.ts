@@ -11,7 +11,8 @@ beforeEach(jest.clearAllMocks)
  */
 
 describe('index', () => {
-  it ('should serve an app', () => {
+  it('should serve an app', () => {
+    // eslint-disable-next-line no-console
     console.log(app)
   })
 })
