@@ -1,6 +1,6 @@
 {
   "name": "@visionelixir/vision",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "",
   "main": "./dist/vision/index.js",
   "scripts": {
@@ -18,7 +18,7 @@
   "author": "Brent Honeybone",
   "license": "ISC",
   "dependencies": {
-    "@visionelixir/elixir": "^0.2.4"
+    "@visionelixir/elixir": "^0.4.2"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -58,22 +58,22 @@
     }
   },
   "devDependencies": {
-    "@types/jest": "^24.9.1",
+    "@types/jest": "^26.0.7",
     "@types/koa": "^2.11.3",
-    "@types/node": "^12.12.37",
-    "@typescript-eslint/eslint-plugin": "^2.31.0",
-    "@typescript-eslint/parser": "^2.31.0",
-    "eslint": "^6.8.0",
+    "@types/node": "^14.0.26",
+    "@typescript-eslint/eslint-plugin": "^3.7.0",
+    "@typescript-eslint/parser": "^3.7.0",
+    "eslint": "^7.5.0",
     "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.3",
-    "eslint-watch": "^6.0.1",
-    "jest": "^24.9.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-watch": "^7.0.0",
+    "jest": "^26.1.0",
     "node-sass": "^4.14.1",
-    "nodemon": "^1.19.4",
-    "prettier": "^1.19.1",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5",
     "supertest": "^4.0.2",
-    "ts-jest": "^24.3.0",
-    "ts-node": "^8.10.1",
-    "typescript": "^3.8.3"
+    "ts-jest": "^26.1.3",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
   }
 }
