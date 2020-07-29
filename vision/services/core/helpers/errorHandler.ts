@@ -2,6 +2,7 @@ import {
   ViewFacade as View,
   VisionFacade as Vision,
   KeyValue,
+  ElixirError,
 } from '@visionelixir/elixir'
 
 export const websiteErrorHandler = async (
@@ -27,20 +28,49 @@ export const websiteErrorHandler = async (
   }
 }
 
-export const apiErrorHandler = async (
+export const apiErrorHandler = (
   statusCode: number,
-  error: Error,
+  error: ElixirError,
   ctx: KeyValue,
-): Promise<void> => {
-  if (statusCode === 500) {
-    if (Vision.getConfig().debug) {
-      ctx.body = { error: error }
-    } else {
-      ctx.body = { error: "Oh noes, that's a 500 :(" }
-    }
-  }
+): void => {
+  ctx.status = statusCode
 
-  if (statusCode === 404) {
-    ctx.body = { error: "Oh noes, that's a 404 :(" }
+  switch (statusCode) {
+    case 500:
+      if (Vision.getConfig().debug) {
+        const { name, type, message, payload, stack } = error
+
+        ctx.body = {
+          name,
+          type,
+          message,
+          payload,
+          stack,
+        }
+      } else {
+        ctx.body = { error: "Oh noes, that's a 500 :(" }
+      }
+      break
+    case 404:
+      if (!ctx.body) {
+        ctx.body = { error: "Oh noes, that's a 404 :(" }
+      }
+      break
+    default:
+      if (!ctx.body) {
+        if (Vision.getConfig().debug && error) {
+          const { name, type, message, payload, stack } = error
+
+          ctx.body = {
+            name,
+            type,
+            message,
+            payload,
+            stack,
+          }
+        } else {
+          ctx.body = { error: "Oh noes, that's an error :(" }
+        }
+      }
   }
 }

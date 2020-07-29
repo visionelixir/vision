@@ -1,5 +1,3 @@
-import * as app from './index'
-
 /**
  * Jest
  */
@@ -12,7 +10,6 @@ beforeEach(jest.clearAllMocks)
 
 describe('index', () => {
   it('should serve an app', () => {
-    // eslint-disable-next-line no-console
-    console.log(app)
+    expect(true).toBeTruthy()
   })
 })
