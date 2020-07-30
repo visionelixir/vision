@@ -10,9 +10,3 @@ EventDispatcher.on(ElixirEvents.RESPONSE_ERROR, async (event: ElixirEvent) => {
 
   await apiErrorHandler(status, error, ctx)
 })
-
-EventDispatcher.on(ElixirEvents.INIT_VARS, async (event: ElixirEvent) => {
-  const { data } = event.getData()
-
-  data.someVar = 'some var'
-})

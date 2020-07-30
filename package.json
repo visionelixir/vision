@@ -5,57 +5,58 @@
   "main": "./dist/vision/index.js",
   "scripts": {
     "test": "jest",
-    "start": "clear && nodemon --watch 'vision/**/*' -e ts,json,njk --exec ts-node ./vision/index.ts",
+    "start": "node dist/vision/index.js",
+    "dev": "clear && nodemon --watch 'vision/**/*' -e ts,json,njk --exec ts-node ./vision/index.ts",
     "lint": "esw 'vision/**/*.{js,ts}'",
     "lint:watch": "esw -w 'vision/**/*.{js,ts}'",
     "typescript:build": "tsc",
     "typescript:watch": "tsc --watch",
-    "scss:watch": "node-sass ./vision/resources/sass -o ./vision/public --watch",
+    "scss:watch": "npm run scss:build && node-sass ./vision/resources/sass -o ./vision/public --watch",
     "scss:build": "node-sass ./vision/resources/sass -o ./vision/public",
     "views:build": "cp -rf ./vision/themes ./dist/vision/themes",
-    "build": "npm test && npm run lint && npm run typescript:build"
+    "build": "npm test && npm run lint && rm -rf ./dist && npm run typescript:build && npm run scss:build && npm run views:build && cp ./vision/.production.environment ./dist/vision/.environment && cp -r ./vision/public ./dist/vision",
+    "deploy": "npm run build && gcloud app deploy"
   },
   "author": "Brent Honeybone",
   "license": "ISC",
   "dependencies": {
-    "@visionelixir/elixir": "^0.5.8"
+    "@visionelixir/elixir": "^0.6.0"
   },
   "jest": {
+    "rootDir": "vision",
     "moduleFileExtensions": [
       "js",
-      "jsx",
       "json",
-      "ts",
-      "tsx"
+      "ts"
     ],
-    "collectCoverage": false,
+    "collectCoverage": true,
     "collectCoverageFrom": [
-      "**/*.{ts,js}",
-      "!**/node_modules/**",
-      "!**/build/**",
-      "!**/coverage/**"
+      "./**/*.{ts,js}",
+      "!./**/tests/**/*",
+      "!./**/mocks/**/*",
+      "!./**/routes.*",
+      "!./**/config/**/*",
+      "!./**/__tests__/**/*",
+      "!./**/__mocks__/**/*",
+      "!./**/test/**/*",
+      "!./**/exports.*"
     ],
-    "coverageThreshold": {
-      "global": {
-        "branches": 90,
-        "functions": 90,
-        "lines": 90,
-        "statements": 90
-      }
-    },
     "coverageReporters": [
       "text",
       "text-summary"
     ],
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(js|ts)x?$",
-    "testPathIgnorePatterns": [
-      "/node_modules/",
-      "/build/",
-      "/dist",
-      "/coverage/"
-    ],
+    "testPathIgnorePatterns": [],
     "transform": {
-      "^.+\\.(ts|tsx)?$": "ts-jest"
+      "^.+\\.(ts)?$": "ts-jest"
+    },
+    "coverageThreshold": {
+      "global": {
+        "branches": 10,
+        "functions": 10,
+        "lines": 10,
+        "statements": 10
+      }
     }
   },
   "devDependencies": {
@@ -68,7 +69,7 @@
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-watch": "^7.0.0",
-    "jest": "^26.1.0",
+    "jest": "^26.2.1",
     "node-sass": "^4.14.1",
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5",

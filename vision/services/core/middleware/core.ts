@@ -3,6 +3,8 @@ import {
   Middleware,
   ElixirError,
   ViewFacade as View,
+  Next,
+  ConfigFacade as Config,
 } from '@visionelixir/elixir'
 import { CoreRepository } from '../repositories/core'
 
@@ -52,7 +54,7 @@ export class CoreMiddleware {
   }
 
   public static view(): Middleware {
-    return async (ctx: Context, next: () => Promise<void>): Promise<void> => {
+    return async (ctx: Context, next: Next): Promise<void> => {
       await next()
 
       const view = await View.render('welcome', {
@@ -65,6 +67,14 @@ export class CoreMiddleware {
       })
 
       ctx.body = view
+    }
+  }
+
+  public static config(): Middleware {
+    return async (ctx: Context): Promise<void> => {
+      const config = Config.get('auth', 'core')
+
+      ctx.body = config
     }
   }
 }
